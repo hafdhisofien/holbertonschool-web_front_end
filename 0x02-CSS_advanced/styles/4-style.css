@@ -9,14 +9,8 @@ html {
     --color-light-grey: #f3f3f3;
     --color-dark-grey: #353535;
     --text-color: var(--color-black);
-    --font-family-base: Helvetica Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
-    --font-family-title: Helvetica Neue,
-    Helvetica,
-    Arial,
-    sans-serif;
+    --font-family-base: Helvetica Neue,Helvetica,Arial,sans-serif;
+    --font-family-title: Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 body {
@@ -28,7 +22,12 @@ a {
     color: var(--text-color);
 }
 
-section h1,section h2,section h3,section h4,section h5,section h6{
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6{
     font-family: var(--font-family-title);
 }
 .visually-hidden {
