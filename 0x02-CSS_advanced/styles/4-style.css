@@ -11,28 +11,22 @@ html {
     --font-family-base: Helvetica Neue, Helvetica, Arial, sans-serif;
     --font-family-title: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
-
 body {
     color: var(--text-color);
     font-family: var(--font-family-base);
 }
-
-a {
-    color: var(--text-color);
-}
-
 section h1,section h2,section h3,section h4,section h5,section h6 {
     font-family: var(--font-family-title);
 }
-
+a {
+    color: var(--text-color);
+}
 .visually-hidden {
     display: none;
 }
-
 .card-category {
     color: var(--color-primary);
 }
-
 .section-tagline {
     color: var(--color-primary);
 }
