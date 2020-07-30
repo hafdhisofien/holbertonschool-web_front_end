@@ -1,0 +1,16 @@
+/*Sass file that assigns:
+
+Margin left and right at 10px to body tags
+Margin left and right at 15px to div tags 
+*/
+@mixin both-margins($pixels) {
+    margin-left: $pixels;
+    margin-right: $pixels;
+}
+body {
+    @include both-margins(10px);
+}
+
+div {
+    @include both-margins(15px);
+}

@@ -1,0 +1,21 @@
+/*
+Sass file that assigns: 
+Font size 12px to all tags of class .info Text color #00FF00 to all tags of class .success and extend style of the class .info Text color #FF0000 to all tags of class .warning and extend style of the class .info
+*/
+$font-size:12px;
+$primary-color: #00FF00;
+$secondary-color: #FF0000;
+
+.info {
+    font-size: $font-size;
+}
+
+.success {
+    @extend .info;
+    color: $primary-color;
+}
+
+.warning {
+    @extend .info;
+    color: $secondary-color;
+}
