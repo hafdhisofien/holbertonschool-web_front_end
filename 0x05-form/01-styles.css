@@ -846,10 +846,8 @@ ul.row {
 .post-comments .section-title {
     font-variant: small-caps;
 }
-
 /* Basic form
     ============================= */
-
 form {
     display: flex;
     flex-direction: column;
