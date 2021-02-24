@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 0</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.min.js"></script>
+</head>
+<body>
+    <div id="cookie-form">
+        <h2>Login to the website</h2>
+        <input type="text" id="firstname" placeholder="firstname">
+        <input type="text" id="email" placeholder="email">
+        <button onclick="login()">Log me in</button>
+    </div>
+
+    <script>
+
+        function showForm() {
+            var welcomewarning = document.getElementsByTagName("h2")[1];
+            if (welcomewarning) {
+                welcomewarning.parentNode.removeChild(welcomewarning);
+            }
+            document.getElementById('cookie-form').style.display = 'block';
+        }
+
+        function hideForm() {
+            document.getElementById('cookie-form').style.display = 'none';
+        }
+
+        function deleteCookiesAndShowForm() {
+            Cookies.remove("firstname");
+            Cookies.remove("email");
+            showForm();
+        }
+
+        function setCookiesAndShowWelcomeMessage() {
+            var firstname = document.getElementById("firstname").value;
+            var email = document.getElementById("email").value;
+            Cookies.set('firstname', firstname, { expires: 10 });
+            Cookies.set('email', email, { expires: 10 });
+            showWelcomeMessageOrForm();
+        }
+
+        function showWelcomeMessageOrForm() {
+            let cookie = Cookies.get('firstname');
+            if (cookie) 
+            {
+                let warning;
+                hideForm();
+                var welcomewarning = document.createElement('h2');
+                warning = document.createTextNode(`Welcome: ${cookie}`);
+                welcomewarning.appendChild(warning);
+                var logout = document.createElement('a');
+                warning = document.createTextNode('(logout)');
+                logout.appendChild(warning);
+                logout.style.fontWeight = 'normal';
+                logout.style.fontStyle = 'italic';
+                logout.style.margin = '0 0 0 10px'
+                logout.onclick = function() {
+                    deleteCookiesAndShowForm();
+                }
+                welcomewarning.appendChild(logout);
+                document.body.appendChild(welcomewarning);
+            } 
+            else 
+            {
+                showForm();
+            }
+        }
+
+        function login() {
+            setCookiesAndShowWelcomeMessage();
+        }
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 0</title>
+</head>
+<body>
+    <div id="cookie-form">
+        <h2>Login to the website</h2>
+        <input type="text" id="firstname" placeholder="firstname">
+        <input type="text" id="email" placeholder="email">
+        <button onclick="login()">Log me in</button>
+    </div>
+
+    <script>
+
+        function showForm() {
+            var welcomewarning = document.getElementsByTagName("h2")[1];
+            if (welcomewarning) {
+                welcomewarning.parentNode.removeChild(welcomewarning);
+            }
+            document.getElementById('cookie-form').style.display = 'block';
+        }
+
+        function hideForm() {
+            document.getElementById('cookie-form').style.display = 'none';
+        }
+
+        function deleteCookiesAndShowForm() {
+            document.cookie = "firstname=; Path=/; Expires=Thu, 13 Mars 1995 14:00:01 GMT;";
+            document.cookie = "email=; Path=/; Expires=Thu, 13 Mars 1995 14:00:01 GMT;";
+            showForm();
+        }
+
+        function setCookies() {
+            var today = new Date();
+            var expire = new Date();
+            expire.setTime(today.getTime() + 3600000*24*10);
+            document.cookie = `firstname=${document.getElementById('firstname').value};expires=${expire.toUTCString()}`;
+            document.cookie = `email=${document.getElementById('email').value};expires=${expire.toUTCString()}`;
+        }
+
+        function showWelcomeMessageOrForm() {
+            let cookie = getCookie('firstname');
+            if (cookie) 
+            {
+                let warning;
+                hideForm();
+                var welcomewarning = document.createElement('h2');
+                warning = document.createTextNode(`Welcome: ${cookie}`);
+                welcomewarning.appendChild(warning);
+                var logout = document.createElement('a');
+                warning = document.createTextNode('(logout)');
+                logout.appendChild(warning);
+                logout.style.fontWeight = 'normal';
+                logout.style.fontStyle = 'italic';
+                logout.style.margin = '0 0 0 10px'
+                logout.onclick = function() {
+                    deleteCookiesAndShowForm();
+                }
+                welcomewarning.appendChild(logout);
+                document.body.appendChild(welcomewarning);
+            } 
+            else 
+            {
+                showForm();
+            }
+        }
+
+        function getCookie(name) {
+            var cookieArr = document.cookie.split(";");
+            for(var i = 0; i < cookieArr.length; i++) {
+                var cookiePair = cookieArr[i].split("=");
+                if(name == cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return "";
+        }
+        function login() {
+            setCookies();
+            showWelcomeMessageOrForm();
+        }
+    </script>
+
+    
+</body>
+</html>
